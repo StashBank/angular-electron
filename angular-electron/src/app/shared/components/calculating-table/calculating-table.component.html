@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Калькулятор авто з США</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSaveClick()">Зберегти</button>
+    <button mat-raised-button (click)="onAddRowClick()">Додати</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <table mat-table [dataSource]="data" class="mat-elevation-z8">    
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> № </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Назва </th>
+        <td mat-cell *matCellDef="let element">
+          <input matInput type="text" [(ngModel)]="element.name" >
+        </td>
+      </ng-container>
+
+      <!-- VIN Column -->
+      <ng-container matColumnDef="vin">
+        <th mat-header-cell *matHeaderCellDef> VIN </th>
+        <td mat-cell *matCellDef="let element">
+          <input matInput type="text" [(ngModel)]="element.vin">
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+      
